@@ -15,5 +15,5 @@ app.use('/api/v1/',articulosRouter)
 
 app.use(errorHandler)
 app.listen(port,()=>{
-    console.log(`Servidor escuchando en el http://localhost:${port}`)
+    console.log(`Servidor corriendo en http://localhost:${port}`)
 })

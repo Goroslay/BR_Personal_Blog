@@ -7,7 +7,6 @@ const ruta = path.join(process.cwd(),'/database/articulos.db.json')
 
 async function escribir(data) {
     fs.writeFileSync(ruta,JSON.stringify(data,null,2))
-    console.log(ruta)
 }
 
 async function leer(){

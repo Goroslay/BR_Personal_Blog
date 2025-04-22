@@ -1,27 +1,23 @@
 import { Router } from "express";
-import{postArticulo} from '../controllers/articulos.controller.js'
+import{postArticulo,getArticulo,getArticuloByID,putArticulo,deleteArticulo} from '../controllers/articulos.controller.js'
+import validaciones from '../middlewares/validaciones.js'
 
 export const articulosRouter=Router()
 
-
-articulosRouter.get('/articulos',(req,res)=>{
-    res.send('Ver todos los articulos')
+articulosRouter.get('/home',(req,res)=>{
+    res.send('ruta inicial')
 })
+
+articulosRouter.get('/articulos',getArticulo)
 
 articulosRouter.get('/articulos/admin',(req,res)=>{
     res.send('Ver todos los articulos siendo admin')
 })
 
-articulosRouter.get('/articulos/:id',(req,res)=>{
-    res.send('Ver un articulo '+ req.params.id)
-})
+articulosRouter.get('/articulos/:id',getArticuloByID)
 
-articulosRouter.post('/articulos',postArticulo)
+articulosRouter.post('/articulos',validaciones,postArticulo)
 
-articulosRouter.put('/articulo/:id',(req,res)=>{
-    res.send('Editar articulo')
-})
+articulosRouter.put('/articulos/:id',putArticulo)
 
-articulosRouter.delete('/articulo/:id',(req,res)=>{
-    res.send('Eliminar articulo')
-})
+articulosRouter.delete('/articulos/:id',deleteArticulo)
